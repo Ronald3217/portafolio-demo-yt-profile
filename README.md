@@ -8,6 +8,10 @@ First, run the development server:
 npm run dev
 # or
 yarn dev
+# build
+yarn build or npm run build
+# export
+yarn export or npm run export
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
