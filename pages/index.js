@@ -4,17 +4,16 @@ import Link from 'next/link'
 //Datos
 import { skills, experiences, projects } from '../profile'
 //Componentes
-import Header from '../components/Header'
+import Layout from '../components/Layout'
 
 export default function Home() {
   console.log(skills);
   return (
-    <Fragment>
+    <Layout>
       <Head>
         <title>Portafolio Next.js Demo</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
       <div className="container">
         <header className="row pt-2">
           <div className="col-md-12">
@@ -53,7 +52,7 @@ export default function Home() {
               <div className="card-body">
                 <h1>Skills</h1>
                 {skills.map(({ skill, percentage }) => (
-                  <div className="py-3">
+                  <div className="py-3" key={skill}>
                     <h3>{skill} </h3>
                     <div className="progress">
                       <div
@@ -90,7 +89,7 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-                <Link href="">
+                <Link href="/">
                   <a className='btn btn-light'>Hire Me</a>
                 </Link>
               </div>
@@ -109,8 +108,8 @@ export default function Home() {
                       Portfolio
                     </h1>
                   </div>
-                  {projects.map(({ name, description, image }, index) => (
-                    <div className="col-md-4 py-2" key={index}>
+                  {projects.map(({ name, description, image }) => (
+                    <div className="col-md-4 py-2" key={name}>
                       <div className="card h-100">
                         <div className="overflow">
                           <img
@@ -122,7 +121,7 @@ export default function Home() {
                         <div className="card-body">
                           <h3>{name}</h3>
                           <p>{description}</p>
-                          <Link href="#">
+                          <Link href="/portfolio">
                             <a className='h'>Know More</a>
                           </Link>
                         </div>
@@ -145,6 +144,6 @@ export default function Home() {
       </div>
 
 
-    </Fragment>
+    </Layout>
   )
 }
