@@ -1,65 +1,150 @@
+import { Fragment } from 'react'
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Link from 'next/link'
+//Datos
+import { skills, experiences, projects } from '../profile'
+//Componentes
+import Header from '../components/Header'
 
 export default function Home() {
+  console.log(skills);
   return (
-    <div className={styles.container}>
+    <Fragment>
       <Head>
-        <title>Create Next App</title>
+        <title>Portafolio Next.js Demo</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header />
+      <div className="container">
+        <header className="row pt-2">
+          <div className="col-md-12">
+            <div className="card card-body bg-secondary text-light">
+              <div className="row">
+                <div className="col-md-4">
+                  {/* <Image
+                    src='/profile.jpeg'
+                    className='img-fluid'
+                    alt='Ryan Ray'
+                    width={250}
+                    height={175}
+                    layout='responsive'
+                  /> */}
+                  <img src="/profile.jpeg" alt="Ryan Ray" className='img-fluid' />
+                </div>
+                <div className="col-md-8">
+                  <h1>Ryan Ray</h1>
+                  <h3>FullStack Developer</h3>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium sit rem aliquam hic itaque eaque, totam dolore soluta cupiditate, esse tempora error repellendus tenetur, temporibus expedita perspiciatis iusto animi reiciendis.
+                    Enim alias iure porro autem repellat consequuntur doloribus. Tempora laboriosam vero veritatis numquam molestias sit nam. Sed esse a architecto sunt, vel aliquid pariatur, officiis exercitationem, totam hic provident nisi.
+                  </p>
+                  <Link href='/'>
+                    <a className='btn btn-outline-light'>Hire Me</a>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+        {/*Segunda Seccion*/}
+        <section className="row mt-2">
+          <div className="col-md-4">
+            <div className="card bg-light">
+              <div className="card-body">
+                <h1>Skills</h1>
+                {skills.map(({ skill, percentage }) => (
+                  <div className="py-3">
+                    <h3>{skill} </h3>
+                    <div className="progress">
+                      <div
+                        className="progress-bar"
+                        role='progressbar'
+                        style={{ width: `${percentage}%` }}
+                        aria-valuenow="50"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      >
+                      </div>
+                    </div>
+                  </div>
+                ))
+                }
+              </div>
+            </div>
+          </div>
+          <div className="col-md-8">
+            {/*Experiencia*/}
+            <div className="card bg-light">
+              <div className="card-body">
+                <h1>Experience</h1>
+                <ul>
+                  {experiences.map(({ title, description, from, to }, index) => (
+                    <li key={index}>
+                      <h3>{title} </h3>
+                      <h5>
+                        {from} {to ? `- ${to}` : "- current"}
+                      </h5>
+                      <p>
+                        {description}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+                <Link href="">
+                  <a className='btn btn-light'>Hire Me</a>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* Tercera Seccion*/ }
+        <section>
+          {/**Portafolio - Listado de Proyectos */}
+          <div className="row">
+            <div className="col-md-12">
+              <div className="card card-body bg-dark">
+                <div className="row">
+                  <div className="col-md-12 my-2">
+                    <h1 className="text-center text-light">
+                      Portfolio
+                    </h1>
+                  </div>
+                  {projects.map(({ name, description, image }, index) => (
+                    <div className="col-md-4 py-2" key={index}>
+                      <div className="card h-100">
+                        <div className="overflow">
+                          <img
+                            src={`/${image}`}
+                            alt={name}
+                            className="card-img-top"
+                          />
+                        </div>
+                        <div className="card-body">
+                          <h3>{name}</h3>
+                          <p>{description}</p>
+                          <Link href="#">
+                            <a className='h'>Know More</a>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                  <div className="col-md-12 mt-4">
+                    <div className="text-center">
+                      <Link href="/portfolio">
+                        <a className="btn btn-outline-light">More Projects</a>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+      </div>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+    </Fragment>
   )
 }
