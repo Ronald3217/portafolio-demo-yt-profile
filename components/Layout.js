@@ -1,10 +1,14 @@
 import Header from './Header'
+import Footer from './Footer'
 
 const Layout = ({children}) => {
     return ( 
         <>
         <Header />
-        {children}
+        <div className="container py-4">
+            {children}
+        </div>
+        <Footer />
         </>
      );
 }
