@@ -7,7 +7,7 @@ import { skills, experiences, projects } from '../profile'
 import Layout from '../components/Layout'
 
 export default function Home() {
-  console.log(skills);
+  
   return (
     <Layout>
       <Head>
