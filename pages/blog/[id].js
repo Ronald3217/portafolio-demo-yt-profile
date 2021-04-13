@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import {Posts} from '../../posts'
 import Layout from '../../components/Layout'
 
@@ -6,6 +7,9 @@ const Post = (props) => {
     const { title } = post[0]
     return ( 
         <Layout>
+            <Head>
+                <title>{title}</title>
+            </Head>
             <h1>{title}</h1>
         </Layout>
      );
