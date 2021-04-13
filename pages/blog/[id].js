@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import {Posts} from '../../posts'
+import { Posts } from '../../posts'
 import Layout from '../../components/Layout'
 
 const Post = (props) => {

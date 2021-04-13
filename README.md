@@ -16,6 +16,8 @@ yarn export or npm run export
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+![ScreenShot](https://raw.github.com/{username}/{repository}/{branch}/{path})
+
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
 ## Learn More
