@@ -13,6 +13,7 @@ const Post = (props) => {
  
 export default Post;
 
+//getStaticPaths
 export async function getStaticPaths() {
     const paths = Posts.map(post=>{
         return {

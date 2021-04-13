@@ -15,6 +15,13 @@ const Blog = ({articulos}) => {
             {
                 articulos.map(articulo =>(
                     <li key={articulo.slug}>
+                        {/** 
+                         * pages/blog/[slug].js
+                         *  → 
+                         * /blog/:slug 
+                         * ( /blog/hello-world) 
+                         * https://nextjs.org/docs/routing/introduction
+                         * **/}
                         <Link href='/blog/[id]' as={`/blog/${articulo.slug}`}>
                             <a>{articulo.title}</a>
                         </Link>
